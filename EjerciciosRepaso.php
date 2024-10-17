@@ -1,3 +1,5 @@
+<!--URL donde se ha subido el proyecto: https://github.com/alepinlop/EjerciciosRepaso/tree/main-->
+
 <h3>Ejercicio 1</h3>
 <?php
 // Creo un array para guardar los valores que salgan en cada tirada de los dados.
@@ -101,10 +103,14 @@ if ($empates != 0 || $victoriasJ1 > 0 || $victoriasJ2 > 0) {
 }
 ?>
 
+<!--URL donde se ha subido el proyecto: https://github.com/alepinlop/EjerciciosRepaso/tree/main-->
+
 <h3>Ejercicio 4</h3>
 <?php
-/* Para este ejercicio utilizaré los repositorios de GitHub para compartir el código con varios participantes.
-    Después de iniciar sesión en nuestra cuenta de GitHub con VSC, realizo un primer commit para publicarlo en GitHub.*/
+/* Alejandro: Para este ejercicio utilizaré los repositorios de GitHub para compartir el código con varios participantes.
+    Después de iniciar sesión en nuestra cuenta de GitHub con VSC, realizo un primer commit para publicarlo en GitHub.
+    Trabajaremos de forma colaborativa, por lo tanto yo tendré mi rama y Ricardo la suya, y los
+    dos compartiremos una rama principal.*/
 
 //Los dos primeros puntos los hara Ricardo 
 //Se añade esta funcion por parte de Ricardo, para agilizar el proceso y adaptar un poco el codigo 
@@ -134,7 +140,7 @@ function enseniarDado($dado)
 
 $dado1 = []; //Declaramos un array vacio para guardar los valores de las 6 tiradas
 $dado2 = mt_rand(1, 6); //Lanzamos enseguida el dado 2
-echo "<br><h3>Tirada de 3 dados</h3>";
+echo "<br><h3>Tirada de 6 dados</h3>";
 for ($i = 0; $i < 6; $i++) {
     $dado = mt_rand(1, 6); //Lanzamos un dado
     enseniarDado($dado); //Enseñamos el valor de ese dado
@@ -144,5 +150,29 @@ for ($i = 0; $i < 6; $i++) {
 echo "<br><h3>Dado a eliminar</h3>";
 enseniarDado($dado2); //Se enseña el valor del segundo dado
 
+/* Alejandro: Ricardo ha realizado los apartados 1 y 2 del Ejercicio 4. Luego ha hecho un commit
+desde Visual Studio Code y un 'pull request' en GitHub para publicar los cambios en la rama
+principal. Ahora que tengo acceso a los cambios que ha hecho en el código, hago el apartado 3.*/
+$dado3 = []; // Array para el dado que mostrará los dados que quedan.
+
+// Bucle donde se añade al $dado3 los valores del $dado1 que hayan sido eliminados por el dado suelto
+for ($i = 0; $i < 6; $i++) {
+    if ($dado1[$i] != $dado2) {
+        $dado3[] = $dado1[$i];
+    }
+}
+
+echo "<br><h3>Dados restantes</h3>";
+
+// Mostrar los dados restantes, en caso de que queden en el array.
+if (!empty($dado3)) {
+    // Recorrer el array dado3 para mostrar cada imagen.
+    foreach ($dado3 as $dado) {
+        enseniarDado($dado); // Mostrar la imagen del dado restante.
+    }
+} else {
+    // Si no quedan dados, muestro un mensaje.
+    echo "<p>No quedan dados después de eliminar los coincidentes.</p>";
+}
 
 ?>
